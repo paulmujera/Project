@@ -11,3 +11,20 @@ class Vendor(models.Model):
     def __str__(self):
         return self.full_name
     
+#Unit 
+class Unit(models.Model):
+    title = models.CharField(max_length=50)
+    short_name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.title
+    
+#Product 
+class Product(models.Model):
+    title = models.CharField(max_length=50)
+    detail = models.TextField()
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='product/')
+    
+    def __str__(self):
+        return self.title
