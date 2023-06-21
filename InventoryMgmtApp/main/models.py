@@ -28,3 +28,15 @@ class Product(models.Model):
     
     def __str__(self):
         return self.title
+    
+#Purchase 
+class Purchase(models.Model):
+   product = models.ForeignKey(Product, on_delete=models.CASCADE)
+   vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
+   qty = models.FloatField()
+   price = models.FloatField()
+   total_amount = models.FloatField()
+   pur_date = models.DateTimeField(auto_now_add=True)
+   
+   class Meta:
+       verbose_name_plural = 'Purchases'
