@@ -40,3 +40,14 @@ class Purchase(models.Model):
    
    class Meta:
        verbose_name_plural = 'Purchases'
+#Sale 
+class Sale(models.Model):
+   product = models.ForeignKey(Product, on_delete=models.CASCADE)
+   vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
+   qty = models.FloatField()
+   price = models.FloatField()
+   total_amount = models.FloatField()
+   sale_date = models.DateTimeField(auto_now_add=True)
+   
+   class Meta:
+       verbose_name_plural = 'Sales'
