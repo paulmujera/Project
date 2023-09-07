@@ -2,7 +2,7 @@ from django.db import models
 
 #Vendors 
 class Vendor(models.Model):
-    full_name = models.CharField(max_length=50)
+    full_name = models.CharField(max_length=50,unique=True, db_index=True)
     photo = models.ImageField(upload_to='vendor/')
     address = models.TextField()
     phone_number = models.CharField(max_length=12)
@@ -27,7 +27,7 @@ class Unit(models.Model):
     
 #Product 
 class Product(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, unique=True, db_index=True)
     detail = models.TextField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to='product/')
@@ -76,7 +76,7 @@ class Purchase(models.Model):
 
 #Customer    
 class Customer(models.Model):
-    customer_name = models.CharField(max_length=50,blank=True)
+    customer_name = models.CharField(max_length=50,blank=True, unique=True, db_index=True)
     customer_mobile = models.CharField(max_length=12,default=None)
     customer_address = models.TextField(default=None)
     
