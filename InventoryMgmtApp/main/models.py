@@ -2,14 +2,15 @@ from django.db import models
 
 #Vendors 
 class Vendor(models.Model):
-    full_name = models.CharField(max_length=50,unique=True, db_index=True)
-    photo = models.ImageField(upload_to='vendor/')
+    full_name = models.CharField(max_length=50,unique=True, db_index=True)  
+   # photo = models.ImageField(upload_to='vendor/')
     address = models.TextField()
     phone_number = models.CharField(max_length=12)
     status = models.BooleanField(default=False)
     
     class Meta:
        verbose_name_plural = '1. Vendors'
+       
     
     def __str__(self):
         return self.full_name
@@ -27,10 +28,10 @@ class Unit(models.Model):
     
 #Product 
 class Product(models.Model):
-    title = models.CharField(max_length=50, unique=True, db_index=True)
+    title = models.CharField(max_length=50,unique=True, db_index=True)
     detail = models.TextField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='product/')
+    #photo = models.ImageField(upload_to='product/')
     
     class Meta:
        verbose_name_plural = '3. Products'
